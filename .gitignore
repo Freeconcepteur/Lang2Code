@@ -1,5 +1,5 @@
 # key openai
-config.py
+config/api_key.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
