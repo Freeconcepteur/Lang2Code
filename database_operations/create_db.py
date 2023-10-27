@@ -5,7 +5,7 @@ def create_db_tables():
     from database_operations.models import Base, Prompt, Code
     from sqlalchemy import create_engine
 # Définir l'URL de la base de données
-    db_url = "sqlite:///database_operations/tmpdb.sqlite"
+    db_url = "sqlite:///database_operations/lang2code_db.sqlite"
 
     if database_exists(db_url) : 
             
