@@ -27,7 +27,7 @@ Avec l'environnement virtuel activé, naviguez vers le répertoire de l'applicat
    ```
 
 ### Configuration de l'API OpenAI
-Placez votre clé API d'OpenAI dans le fichier `config/api_key.txt`.
+Placez votre clé API d'OpenAI dans le fichier `config/.venv`.
 
 ## Utilisation
 1. Naviguez vers le répertoire de l'application via la ligne de commande ou un terminal.
