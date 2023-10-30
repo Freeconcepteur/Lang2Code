@@ -41,7 +41,7 @@ def table_feed(a, b, c, d, e):
     session.close() # Fermer la session
 
 
-def read_titles(): #fonction pour lire tous les titres depuis la DB
+def read_titles(): #fonction pour lire tous les titres depuis la DB:
     from sqlalchemy import create_engine
     from sqlalchemy_utils import database_exists, create_database #importer package nécessaire
     from database_operations.models import Title
@@ -54,7 +54,7 @@ def read_titles(): #fonction pour lire tous les titres depuis la DB
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    titles = session.query(Title).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+    titles = session.query(Title).all() #Ici on récupère tous les titres de la table titre
     liste_titres = []
 
     for title in titles:
