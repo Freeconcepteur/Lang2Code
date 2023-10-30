@@ -43,7 +43,6 @@ def table_feed(a, b, c, d, e):
 
 def read_titles(): #fonction pour lire tous les titres depuis la DB:
     from sqlalchemy import create_engine
-    from sqlalchemy_utils import database_exists, create_database #importer package nécessaire
     from database_operations.models import Title
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
@@ -61,3 +60,52 @@ def read_titles(): #fonction pour lire tous les titres depuis la DB:
         liste_titres.append(title.title)
 
     return liste_titres
+
+
+
+def read_prompts():
+    from database_operations.models import Prompt
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    db_url = "sqlite:///database_operations/lang2code_db.sqlite"
+    engine = create_engine(db_url)
+
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    #Read table
+
+    session = Session() #on ouvre une nouvelle session
+
+    prompts = session.query(Prompt).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+    liste_prompts = []
+
+    for prompt in prompts:
+        liste_prompts.append(prompt.prompt_txt)
+    
+    return liste_prompts
+
+
+def read_codes():
+    from database_operations.models import Code
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    db_url = "sqlite:///database_operations/lang2code_db.sqlite"
+    engine = create_engine(db_url)
+
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    #Read table
+
+    session = Session() #on ouvre une nouvelle session
+
+    codes = session.query(Code).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+    liste_codes = []
+
+    for code in codes:
+        liste_codes.append(code.code_txt)
+    
+    return liste_codes
