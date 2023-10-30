@@ -4,17 +4,27 @@ from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
+class Title(Base):
+    __tablename__ = 'titles_tbl'
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    title = Column(String)
+    
+    # Relationship to the Prompt table
+    prompts = relationship("Prompt", back_populates="title")
 
 class Prompt(Base):
     __tablename__ = 'prompts_tbl'
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    title = Column(String)
+    title_id = Column(Integer, ForeignKey('titles_tbl.id'))
     prompt_txt = Column(Text)
 
     # Relationship to the Code table
     codes = relationship("Code", back_populates="prompt")
-
+    
+    # Relationship to the Titre table
+    title = relationship("Title", back_populates="prompts")
 
 class Code(Base):
     __tablename__ = 'code_tbl'
