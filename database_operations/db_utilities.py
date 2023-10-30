@@ -39,3 +39,25 @@ def table_feed(a, b, c, d, e):
     session.commit() #conclue l'ajout des produits dans la table produits
     
     session.close() # Fermer la session
+
+
+def read_titles(): #fonction pour lire tous les titres depuis la DB
+    from sqlalchemy import create_engine
+    from sqlalchemy_utils import database_exists, create_database #importer package nécessaire
+    from database_operations.models import Title
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+
+    db_url = "sqlite:///database_operations/lang2code_db.sqlite"
+    engine = create_engine(db_url)
+
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    titles = session.query(Title).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+    liste_titres = []
+
+    for title in titles:
+        liste_titres.append(title.title)
+
+    return liste_titres
