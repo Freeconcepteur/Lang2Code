@@ -29,6 +29,9 @@ Avec l'environnement virtuel activé, naviguez vers le répertoire de l'applicat
 ### Configuration de l'API OpenAI
 Placez votre clé API d'OpenAI dans le fichier `config/.env`.
 
+### Configuration de la BDD
+Utiliser la fonction create_db_tables() dans le programme finale. Celle-ci va créer 'lang2code_db.sqlite' dans le dossier database_operations. Si 'lang2code_db.sqlite' existe déjà, un message d'avertissement s'affichera dans le terminale. La BDD contient 2 tables, 'Prompt' et 'Code'.
+
 ## Utilisation
 1. Naviguez vers le répertoire de l'application via la ligne de commande ou un terminal.
 2. Exécutez l'application en utilisant la commande `streamlit run app.py`.
