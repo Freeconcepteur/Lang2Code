@@ -25,10 +25,10 @@ else :
 #db_url = "sqlite:///database_operations/lang2code_db.sqlite"
 #engine = create_engine(db_url)
 
-title = 'Titre'
-prompt = 'améliore la fonction fichtre'
-title_id = 2
-code = 'la fonction est améliorer fichtre'
+title = 'Un autre titre ?'
+prompt = 'et là ?'
+title_id = 3
+code = 'ou pas'
 prompt_id = 2
 
 
@@ -45,9 +45,9 @@ session = Session()
 
 session = Session() #on ouvre une nouvelle session
 
-ti = session.get(Title, 1)
-pr = session.get(Prompt, 1)  #Ici on lit le nom du premier produit : retourne olive
-co = session.get(Code, 1)
+ti = session.get(Title, 5)
+pr = session.get(Prompt, 5)  #Ici on lit le nom du premier produit : retourne olive
+co = session.get(Code, 5)
 
 
 #print("TITLE", ti.title)
@@ -57,17 +57,20 @@ co = session.get(Code, 1)
 #print("PROMT_ID", co.prompt_id)
 
 titles = session.query(Title).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+liste_titres = []
 
-#for title in titles:
-    #print(f"ID: {title.id}, title: {title.title}")
-
-
+for title in titles:
+    print(f"ID: {title.id}, title: {title.title}")
+    liste_titres.append(title.title)
+    
+print(len(liste_titres))
+print(liste_titres)
 #prompts = session.query(Prompt).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
 
 #for prompt in prompts:
     #print(f"ID: {prompt.id}, Nom: {prompt.prompt_txt}")
 
-codes = session.query(Code).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
+#codes = session.query(Code).all() #Ici on récupère le nom de chaque prompt et title dans la table 'Prompts'
 
 #for code in codes:
     #print(f"ID: {code.id}, Code: {code.code_txt}")
@@ -80,11 +83,11 @@ result = session.query(Title, Prompt, Code).\
     all()
 
 # Parcourez les résultats et affichez-les
-for title, prompt, code in result:
-    print("Title:", title.title)
-    print("Prompt Text:", prompt.prompt_txt)
-    print("Code Text:", code.code_txt)
-    print("\n")
+#for title, prompt, code in result:
+    #print("Title:", title.title)
+    #print("Prompt Text:", prompt.prompt_txt)
+    #print("Code Text:", code.code_txt)
+    #print("\n")
 
 
 
